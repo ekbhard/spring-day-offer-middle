@@ -64,7 +64,7 @@ public class EmployeeService {
         if (task.isPresent()) {
             Task currentTask = task.get();
             currentTask.setStatus(status);
-            taskRepository.save(currentTask);
+            taskRepository.saveAndFlush(currentTask);
         } else throw new java.lang.UnsupportedOperationException("task not found");
     }
 
