@@ -74,7 +74,9 @@ public class EmployeeService {
        if(employee.isPresent()){
            Task task = modelMapper.map(newTask, Task.class);
            taskRepository.save(task);
-           employee.get().addTask(task);
+           Employee employee1 = employee.get();
+                   employee1.addTask(task);
+           employeeRepository.save(employee1);
        }
     }
 }
