@@ -1,5 +1,6 @@
 package com.onedayoffer.taskdistribution.DTO;
 
+import com.onedayoffer.taskdistribution.repositories.entities.Employee;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,5 +23,9 @@ public class EmployeeDTO {
     public Integer getTotalLeadTime() {
         if (tasks.size() == 0) return 0;
         else return tasks.stream().mapToInt(TaskDTO::getLeadTime).sum();
+    }
+
+    public static EmployeeDTO convert(Employee employee) {
+        return new EmployeeDTO(employee.getFio(),employee.getJobTitle());
     }
 }

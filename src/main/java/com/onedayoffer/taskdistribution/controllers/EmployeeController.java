@@ -7,6 +7,7 @@ import com.onedayoffer.taskdistribution.services.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -38,14 +39,13 @@ public class EmployeeController {
     @PatchMapping("{id}/tasks/{taskId}/status")
     @ResponseStatus(HttpStatus.OK)
     public void changeTaskStatus(@PathVariable Integer id
-                                          /* other PathVariable and RequestParam */ ) {
-        //TaskStatus status = TaskStatus.valueOf(newStatus);
-        //employeeService.changeTaskStatus ...
+            , @RequestParam("newStatus") TaskStatus status) {
+        employeeService.changeTaskStatus(id, status);
     }
 
     @PostMapping("...")
     @ResponseStatus(HttpStatus.CREATED)
-    public void postNewTask(/* some params */) {
-        //employeeService.postNewTask ...
+    public void postNewTask(@PathVariable Integer id, @RequestParam("newStatus") TaskDTO taskDTO) {
+        employeeService.postNewTask(id, taskDTO);
     }
 }

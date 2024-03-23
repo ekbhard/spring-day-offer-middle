@@ -1,12 +1,15 @@
 package com.onedayoffer.taskdistribution.repositories.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "employee")
+@Getter
 public class Employee {
 
     @Id
